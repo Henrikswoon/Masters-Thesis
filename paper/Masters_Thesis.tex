@@ -1,0 +1,72 @@
+\documentclass[a4paper,11pt]{report}
+
+%\usepackage{UmUThesis}           % Standard English
+\usepackage[noindent]{UmUThesis}  % Non indented English
+%\usepackage[se]{UmUThesis}       % Swedish
+
+\usepackage[utf8]{inputenc}
+\usepackage{courier}              % Nicer fonts are used. (not necessary)
+\usepackage{pslatex}              % Also nicer fonts. (not necessary)
+%\usepackage{lmodern}             % Optional fonts. (not necessary)
+
+\usepackage{tabularx}
+\usepackage{graphicx}
+
+
+\title{Talos+ Leveraging Structured Error Handling For Increased Security}
+\subtitle{Broad software vulnerability mitigation through enabling Security Workarounds for Rapid Response in Java}
+\author{Melker Henriksson}
+\supervisor{Prof. Alexandre Bartél} % Supervisor at UMU
+\supervisore{Anders Sigfridsson, Evelina Malmqvist} % External supervisor
+\examiner{Ola Ringdahl} % Examiner
+\semester{Spring 2025}
+\course{Degree Project in Interaction Technology and Design, 30 credits}
+\education{Master of Science Programme in Interaction Technology and Design, 300 credits}
+
+\graphicspath{{pictures/}}
+
+\pagestyle{empty}
+
+\begin{document}
+\maketitle
+
+\cleardoublepage
+\begin{abstract}
+% An abstract is a short description (10-20 lines) of your thesis. Because on-line search databases typically contain only abstracts, it is vital to write a complete but concise description of your work to entice potential readers into obtaining a copy of the full paper. Although an abstract is brief, it should do almost as much work as the multi-page paper that follows it. Each chapter or section is typically a single sentence, but there is always room for creativity. In particular, parts may be merged or spread among a set of sentences. This template for a Bachelor's or Master's Thesis report using {{\LaTeX}} is written by Pedher Johansson, associate professor at the Department of Computing Science, Umeå University. Parts of the files are besed o work done in 2004 by Jonas Birmé, modified by Per Lindström. Ola Ringdahl added the new UMU logo (2019) and modified the template to match the ID programme.
+
+%It is my aim to extend, compare and verify the claims made in the paper "Talos: Neutralizing Vulnerabilities with Securiity Workarounds for Rapid Response". In their paper Zhen Huang et. al.describe an algorithm which can, to some degree, detect error-handling code and instrument these segments with 'Security Workarounds for Rapid Response' allowing them to be disabled by developers while a patch is being written. Therefore improving the pre-patch window of vulnerability. Through reimplementing the software with a focus on Java a language with structured exception handling we can compare the coverage provided as the number of previous Vulnerabilities which can be neutralized using 'Talos+' and further strengthen Talos viability as a mitigation strategy by extending it to a language with structured exception handling as a proof of concept.
+
+The pre-patch window of Vulnerability remains a critical challenge in cybersecurity, leaving systems exposed to exploits before patches are deployed.
+
+The paper \textit{`Talos: Neutralizing Vulnerabilities with Security Workarounds for Rapid Response`} by Zhen Huang et al. proposes an algorithm that detects error-handling code and instruments it with security workarounds, allowing developers to disable vulnerable segments temporarily. 
+
+This thesis aims to extend, compare, and verify the claims made in the Talos paper. Since the algorithm's heuristics focus on languages without structured exception handling and experiments are only performed on programs written in c/c++, there is as mentioned in future works potential to expand Talos functionality to cover these languages.
+
+By extending Talos to Java, this research strengthens its viability as a mitigation strategy and provides a proof of concept for its applicability in languages with structured exception handling.
+
+The findings aim to improve the pre-patch vulnerability window for Java and explore potential Vulnerabilities resulting from Talos and so contribute to the broader field of cybersecurity. 
+
+
+\end{abstract}
+\cleardoublepage
+\chapter*{Acknowledgements}
+\cleardoublepage
+\tableofcontents
+\cleardoublepage
+\pagestyle{fancy}
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\chapter{Introduction}
+before the first chapter.
+
+
+
+\cleardoublepage
+
+\addcontentsline{toc}{chapter}{\bibname}
+\bibliographystyle{plain}
+\bibliography{base}
+
+\appendix
+
+\end{document}

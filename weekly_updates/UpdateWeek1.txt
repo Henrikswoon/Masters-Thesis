@@ -1,0 +1,18 @@
+Hi! 
+I was thinking that i would send you an email at the end of each week trying to summarize the work i have done and asking less urgent questions.
+
+This week has mainly been spent getting familiar with the Omegapoint office, writing a presentation on the Talos article, writing the project specification and trying to get in touch with the Talos authors. 
+
+I have not really had any success in contacting the Talos authors, and i was thinking maybe you could help me by sending them an email. Maybe they're more likely to answer an professor than some student. The main author Zhen Huang is currently employed at DePaul university, this is his information.
+
+https://www.cdm.depaul.edu/Faculty-and-Staff/Pages/faculty-info.aspx?fid=1476
+zhen.huang@depaul.edu
+
+Regarding the article i would like some help interpreting some parts. Section IV.A 'Inserting SWRRs' talks about intra-procedural vs inter-procedural error handling functions. Where intra-procedural error handling handle errors without exposing them to the caller, but inter-procedural error-handling does. The article then states after defining these that inter-procedural error handling "may free memory that they know was allocated on the path leading to the error-handling code, or conversely fail to free memory since they know the paths leading to the error-handling code did not allocate it. If Talos redirects execution to such an error handling path without understanding the internal semantics of the function, it could result in a double free bug, ..." I'm having trouble understanding fully how this would be caused. I would be really grateful if you could help me by writing and abstract example or if we could book a meeting and try to interpret this together. 
+
+I'm also having trouble interpreting section III.A 'Effective Coverage' (2). My interpretation is that they will not be counting SWRRs which result in a major loss of functionality as providing effective coverage? 
+
+Finally i was thinking maybe we should discuss the Thesis direction early next week? My current proposal would be extending Talos to languages with structured exception handling Java specifically. The article also mentions that investigations into a loss of security for systems using Talos should be done but i am less certain of whether that is feasible. What is your opinion?
+
+With kind regards
+Melker Henriksson
