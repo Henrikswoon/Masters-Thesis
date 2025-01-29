@@ -1,9 +1,9 @@
 ## Manuscript, presentation Talos
 
-<> Title:
+Title: 
 This presentation will serve as a summary to Talos: Neutralizing vulnerabilities with Security Workarounds for Rapid Response. Focusing on the parts which i have deemed more important to the work i will be doing extending it's functionality and further strengthening claims made.
 
-<> Introduction
+Introduction
 There is often a considerable delay between the discovery of a vulnerability and the issue of a patch. According to findings made in this article 43.4% of vulnerabilities inspected were patched within 7 days after the vulnerabilities were disclosed, 23.3% between 7 and 30 days and 33.3% of them were patched after 30 days. We can assume that the number of exploits performed should correlate to lenght of time between discovery and patching. 
 
 One way to mitigate this window of vulnerability is through configuration workaround, which prevents vulnerable code from being executed.
