@@ -25,23 +25,41 @@ This project will use an agile methodology reviewing each sprint every other mon
 
 ### Detailed timeplan 
 v.4&emsp;&emsp; Project plan, Forward snowballing analysis, Presentation 'Talos'
+
 v.5&emsp;&emsp; Project plan, Forward snowballing analysis, Presentation 'Talos'
-v.6&emsp;&emsp; JVM Research, Deadline Project plan
-v.7&emsp;&emsp; JVM Research / Implementation
+
+v.6&emsp;&emsp; JVM Research, Talos Source code research, Deadline Project plan
+
+v.7&emsp;&emsp; JVM Research, Talos Source code research, Implementation
+
 v.8&emsp;&emsp; Implementation
+
 v.9&emsp;&emsp; Implementation
+
 v.10&emsp;&ensp; Implementation
+
 v.11&emsp;&ensp; Implementation, Midway seminar: 'Problem statement', 'state of the art', 'Research questions', 'Expected Results', 'Method', 'Possible related issues' <br/>--> _Introduction & Background should be finished here_
+
 v.12&emsp;&ensp; Experimentation
+
 v.13&emsp;&ensp; Experimentation
+
 v.14&emsp;&ensp; Research possible vulnerabilities caused by instrumentation
+
 v.15&emsp;&ensp; Research possible vulnerabilities caused by instrumentation
+
 v.16&emsp;&ensp; Finalize any remaining issues, Write paper
+
 v.17&emsp;&ensp; Write paper
+
 v.18&emsp;&ensp; Write paper
+
 v.19&emsp;&ensp; Write paper
+
 v.20&emsp;&ensp; Write paper
+
 v.21&emsp;&ensp; Write paper, Deadline: **submission of paper**
+
 v.22&emsp;&ensp; Write presentation, present.
 ### Additional information
 
