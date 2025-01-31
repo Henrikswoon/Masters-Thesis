@@ -1,14 +1,16 @@
 # Project plan
 ### Which specific questions will be answered within the scope of the project
 1. Will the program described in 'Talos: Neutralizing Vulnerabilities with Security Workarounds for Rapid Response' be extensible to languages with structured error-handling such as Java?
+
 2. Will programs in java instrumented in a similar way be able to cover a similar amount of vulnerabilities.
+
 3. Can i discover any vulnerability created by instrumentation using Talos?
-4. ?? Can running semantic aware vulnerability detection based on Talos when applying a patch be used to avoid targeted backdoors?
 ### Which methods will be used to answer these questions
-Question '1.' can be answered through an experiment. 
-Question '2.' can be answered in a similar way to the original article. Applicable vulnerabilities should be collected from an database such as nist, data should then be collected on whether these were able to be neutralized using instrumented 'software workarounds for rapid response' and if these workarounds were 'obtrusive'.
-Question '3.' Not sure. 
-Question '4.' Not sure if this is within scope or would lessen coherency of the paper.
+Question 1. can be answered through an experiment. 
+
+Question 2. can be answered in a similar way to the original article. Applicable vulnerabilities should be collected from an database such as nist, data should then be collected on whether these were able to be neutralized using instrumented 'software workarounds for rapid response' and if these workarounds were 'obtrusive'.
+
+Question 3. Not sure. 
 
 ### Hur will the results found be evaluated
 Results will be evaluated in comparison to the original paper.
@@ -65,7 +67,7 @@ v.22&emsp;&ensp; Write presentation, present.
 
 ### Risks 
  - What happends if neccessary software is inaccessible
- > Talos was found on GitHub and has been forked to [https://github.com/Henrikswoon/Talos/tree/master][my personal Git]
+ > Talos was found on GitHub and has been forked to (https://github.com/Henrikswoon/Talos/tree/master)[my personal Git]
  - What can be done if you don't have enough time at the end of the project
  > Not sure, since the theory part of this thesis is still a little unclear until the implementation has been finalized. Perhaps this could be discussed? 
 
