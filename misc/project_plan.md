@@ -67,7 +67,7 @@ v.22&emsp;&ensp; Write presentation, present.
 
 ### Risks 
  - What happends if neccessary software is inaccessible
- > Talos was found on GitHub and has been forked to (https://github.com/Henrikswoon/Talos/tree/master)[my personal Git]
+ > Talos was found on GitHub and has been forked to [my personal Git](https://github.com/Henrikswoon/Talos/tree/master)
  - What can be done if you don't have enough time at the end of the project
  > Not sure, since the theory part of this thesis is still a little unclear until the implementation has been finalized. Perhaps this could be discussed? 
 
@@ -76,11 +76,14 @@ The code produced should be under open source license, since TALOS uses GNU GPL 
 
 ### Address to the journal
 _Currently unavailable, will make accessible asap._
-henriksson-melker.se/masters-thesis/journal
+
+[henriksson-melker.se/masters-thesis/journal](henriksson-melker.se/masters-thesis/journal)
 
 ### Supervision
-Alexandre Bartél    - Umeå Universitet
+Alexandre Bartel    - Umeå Universitet
+
 Anders Sigfridsson  - Omegapoint
+
 Evelina Malmqvist   - Omegapoint
 
 ---
