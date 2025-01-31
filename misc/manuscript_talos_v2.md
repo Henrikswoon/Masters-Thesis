@@ -102,12 +102,6 @@ Authors argue that Talon is comparatively significantly cheaper than writing a p
 
 <div style="page-break-before: always;"></div> 
 ----> slide 13<br/>
-In summary Talos should provide
- - Security: Generated SWRR should neutralize it's intended vulnerability, without introducing new bugs or vulnerabilities which affect Integrity or Confidentiality.
- - Effective coverage: Generated SWRRs should be able to cover a significant amount of vulnerabilities compared to configuration workarounds. This is measured in two components
-  * 'basic coverage' The number of vulnerabilities whose code SWRRs can disable
-  * The percentage of SWRRs that when enabled, result in a minor loss of functionality, similar to what would be expected from a configuration workaround.
- - Low Cost: SWRRs are automatically inserted into an application using Talos, thus minimizing the engineering effort required to user SWRRs.
 
 What were the results then?
 > Out of 11 CVE's chosen all was successfully neutralized, 8 och which was deemed to be unobtrusive. 
@@ -119,5 +113,10 @@ What were the results then?
 > Overhead was measured for in-place deployment, since patch based deployment would produce negligible overhead. It found that project lines of code increased on average 2% changing 89% of the files. Runtime performance overhead was measured at 1.3%.
 
 These results show promise in providing Security, Effective coverage at a Low Cost.
-
-
+------------------
+In summary Talos should provide
+ - Security: Generated SWRR should neutralize it's intended vulnerability, without introducing new bugs or vulnerabilities which affect Integrity or Confidentiality.
+ - Effective coverage: Generated SWRRs should be able to cover a significant amount of vulnerabilities compared to configuration workarounds. This is measured in two components
+  * 'basic coverage' The number of vulnerabilities whose code SWRRs can disable
+  * The percentage of SWRRs that when enabled, result in a minor loss of functionality, similar to what would be expected from a configuration workaround.
+ - Low Cost: SWRRs are automatically inserted into an application using Talos, thus minimizing the engineering effort required to user SWRRs.
