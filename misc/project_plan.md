@@ -18,6 +18,7 @@ Talos: Neutralizing Vulnerabilities with Security Workarounds for Rapid Responds
 
 ### What will be implemented?
 A version of Talos extended to be able to instrument Java.
+(Should perhaps be given a name?)
 
 ### Which working method will be used
 This project will use an agile methodology reviewing each sprint every other monday and setting goals based on what was achieved.
@@ -46,12 +47,15 @@ v.22&emsp;&ensp; Write presentation, present.
 
 ### Risks 
  - What happends if neccessary software is inaccessible
+ > Talos was found on GitHub and has been forked to [https://github.com/Henrikswoon/Talos/tree/master][my personal Git]
  - What can be done if you don't have enough time at the end of the project
- - ...
+ > Not sure, since the theory part of this thesis is still a little unclear until the implementation has been finalized. Perhaps this could be discussed? 
 
 ### Agreements in supervision
+The code produced should be under open source license, since TALOS uses GNU GPL this license would probably be suitable.
 
 ### Address to the journal
+_Currently unavailable, will make accessible asap._
 henriksson-melker.se/masters-thesis/journal
 
 ### Supervision
