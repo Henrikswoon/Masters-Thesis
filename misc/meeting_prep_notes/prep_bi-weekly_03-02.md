@@ -1,5 +1,17 @@
 Introduce Christopher
+
+Planned Work:
+    - Forward snowballing analysis.
+      I didn't find the sources gained from a Forward snowballing analysis to be particularily relevant to this thesis.
+    - Presentation on reviewed litterature
+      I will hold a presentation on Talos 
+    - Proposal on a programming language
+      I propose Java, as it's a language which I have prior experience in and some specific functions such as Agents could be interesting.
+    - Begin writing 'Background' and 'Related works'
+      I have written some basic introductory text and set up the environment. Moving forward i aim to write 1-2 pages a day including summaries or notes.
+
 Presentation on Talos
+
 Proposal Algorithm for Java.
 ```
 procedure FIND_FUNCTIONS(Functions)
@@ -38,9 +50,19 @@ Research strategies for Java, Jvm, Source code.
 
 From open questions.
 > Runtime disabling of functions?
+> 
 > JVM agents can be used for instrumentation? These are usually used for statistics (research this.)
+>
 > in-place deployment, should users be able to themselves selectively disable certain functions through editing the configuration file? Could probably be an security issue. Inappropriate for proprietary code which would be obfuscated either way.
+>
 > Are there any ways other than errors to redirect control flow safely?
+
+Questions project plan
+> Which method could be used to answer the question 'Can i discover any vulnerability created by instrumentation with Talos'?
+>
+> Should this fork extension of Talos be given a name and if so is there anything important to consider?
+>
+> What risks can be identified and if they become unavoidable how can they be amended.
 
 # Project plan
 ### Which specific questions will be answered within the scope of the project
