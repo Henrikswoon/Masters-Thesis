@@ -12,7 +12,7 @@ Question 2. can be answered in a similar way to the original article. Applicable
 
 Question 3. Not sure. 
 
-### Hur will the results found be evaluated
+### How will the results found be evaluated
 Results will be evaluated in comparison to the original paper.
 
 ### Which relevant literature has been identified
