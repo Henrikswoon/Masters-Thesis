@@ -8,5 +8,5 @@ mkdir -p "$name"
 
 echo "$link" > "$name/link"
 cd "$name" || exit
-nvim summary.md
+code summary.md
 

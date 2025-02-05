@@ -131,18 +131,143 @@ Method throws StackOverflowError | VirtualMachineError {
     throw PossiblyAsyncError; <-- Could cause an edge case ?
 }
 ``` 
-Similarly the __OutOfmemoryError__ _'may be thrown asynchronously'_ and should be used with caution.
+Similarly the __OutOfMemoryError__ _'may be thrown asynchronously'_ and should be used with caution.
 
 ---
 
-## Compile-Time Checking of Exceptions
+## 11.2. Compile-Time Checking of Exceptions
 The java programming language requires that a program contains handlers for _checked exceptions_ which can result from execution of a method or constructor. This compile-time checking for the presence of exception handlers is designed to reduce the number of exceptions which are not properly handled. For each checked exception which is a possible result, the _throws_ clause for the method or constructor must mention the class of that exception or one of the superclasses of the class of that exception.
 
 The checked exception classes named in the throws clause are part of the contract between the implementor and user of the method or constructor. The _throws_ clause of an overriding method may not specify that this method will result in throwing any checked exception which the overridden method is not permitted, by its _throws_ clause, to throw. When interfaces are involved, more than one method declaration may be overridden by a single overriding declaration. In this case, the overriding declaration must have a _throws_ clause that is compatible with all the overridden declarations.
 
 The unchecked exception classes are exempted from compile-time checking, but sophisticated programs may yet wish to catch and attempt to recover from some of these conditions.
 
+_Run-time exception classes are exempted because, in the judgement of the designers of the Java programming language, having to declare such exceptions would not aid significantly in establishing the correctness of programs. Many of the operations and constructs of the Java programming language can result in exceptions at run time. The information available to a Java compiler, and the level of analysis a compiler performs, are usually not sufficient to establish that such run-time exceptions cannot occur, even though this may be obvious to the programmer. Requiring such exception classes to be declared would simply be an irritation to programmers.
+
+For example, certain code might implement a circular data structure that, by construction, can never involve null references; the programmer can then be certain that a __NullPointerException__ cannot occur, but it would be difficult for a Java compiler to prove it. The theorem-proving technology that is needed to establish such global properties of data structures is beyond the scope of this specification.
+
+We say that a statement or expression _can throw_ and exceptions class E if, according to the rules in [11.2.1](#1121-exception-analysis-of-expressions) and [11.2.2](#1122-exception-analysis-of-statements), the execution of the statement or expression can result in an exception of class E being thrown.
+
+We say that a _catch_ clause _can catch_ its catchable exception classes:
+ - The catchable exception class of a uni-_catch_ clause is the declared type of its exception parameter
+ - The catchable exception classes of a multi-_catch_ clause are the alternatives in the union that denotes the type of its exception parameter
+
+ ---
+ ### Note: 11.2. Compile-Time Checking of Exceptions
+> Compile time checking of exceptions are largely not interesting for this thesis work since they are a tool meant to establish correctness of programs. Meaning that a SWRR triggered at compile time would be recognized as an incorrect program sort of true but not in an helpful way.
+ 
+--- 
+## 11.2.1. Exception Analysis of Expressions 
+
+A class instance creation expression can throw an exception class E _if and only if_ either:
+ - The expression is a qualified class instance creation expression and the qualifying expression can throw E; or
+ - Some expression of the argument list can throw E; or
+ - E is one of the exception types of the invocation type of the chosen constructor; or
+ - The class instance creation expression includes a __ClassBody__, and some instance initializer or instance variable initializer in the __ClassBody__ can throw E.
+
+A method invocation expression can throw an exception class E _if and only if_ either 
+ - The method invocation expression is of the form _Primary . [TypeArguments] Identifier_ and the _Primary_ expression can throw E; or
+ - Some expression of the argument list can throw E; or 
+ - E is one of the exception types of the invocation type of the chosen method.
+A lambda expression can throw no exception classes
+
+A switch expression can throw an exception class E _if and only if_ either:
+ - The selector expression can throw E; or
+ - Some switch rule expression, switch rule block, switch rule _throw_ statement, or switch labeled statement group in teh switch block can throw E.
+For every other kind of expression, the expression can throw and exception class E _if and only if_ one of it immediate subexpressions can throw E.
+
+--- 
+### Note: 11.2.1. Exception Analysis of Expressions
+A _class instance creation expression_ specifies a class to be instantiated, possibly by type arguments or a diamond _<>_ if the class being instantiated is generic, followed by (a possibly empty) list of actual value arguments to the constructor.
+> This seems to imply that _class instance creation expressions_ wrap constructors?
+
+Section <code>15.9.3. Choosing the Constructor and its Arguments</code> supports this as it describes how this expression selects one of the classes constructors.
+
+As we want SWRRs to when enabled disallow any vulnerable code from executing, throwing an error at the _class instance creation expression_ could be appropriate given that disabling a class doesn't become more obtrusive than a function.
+
+_'E is one of the exception types of the invocation type of the chosen constructor'_
+> Initially seemed useful but can't really understand fully how this works. 
+> No longer think this will be useful but will check with supervisors.
+
+_'The class instance creation expression includes a ClassBody, and some instance initializer or instance variable initializer in the __ClassBody__ can throw E'_ 
+> Did not fully understand this but from what i have gathered this refers to anonymous classes in Java. Where 
+```Java
+//for class C and method C:M
+//Class instance creation expression
+C obj = new C() {
+    //ClassBody
+    @Override
+    void M() throws SWRRException{
+        //...
+    }
+}
+```
+> This could be a method for in-place deployment that is more granular targeting not only a specific function but rather an instance of a function.
+
+_'The expression is a qualified class instance creation expression and the qualifying expression can throw E'_
+> What this means exactly wasn't directly apparent to me. 
+
+> __Definition:__ Unqualified class instance creation expressions begin with the keyword <code>new</code>. An unqualified class instance creation expression may be used to create an instance of a class, regardless of whether the class is a top-level, member, local or anonymous class.
+
+> __Definition:__ Qualified class instance creation expressions begin with a _Primary_. A qualified class instance creation expression enables the creation of instances of inner member classes and their anonymous subclasses.
+
+> As far as i can understand. This means that if for <code>OC</code> _Outer Class_, <code>IC</code> _Inner Class_ and Exception <code>E</code> given that <code>OC</code> Throws <code>E</code> --> <code>IC</code> Throws <code>E</code>
+
+>Not sure how this would be useable as we're interested in instrumenting SWRRs at a function level if possible.
+
 ---
 
+## 11.2.2 Exception Analysis of Statements
 
+A _throw_ statement whose thrown expression has static type E and is not a final or effectively final exception parameter can throw E or any exception class that the thrown expression can throw.
 
+<small>_For example, the statement <code>throw new java.io.FileNotFoundException();</code> can throw <code>java.io.FileNotFoundException</code> only. Formally, it is not the case that it "can throw" a subclass or superclass of <code>java.io.FileNotFoundException</code>._</small>
+
+A _throw_ statement whose thrown expression is a final or effectively final exception parameter of a catch clause C can throw exception class E _if and only if_:
+ - E is an exception class that the _try_ block of the _try_ statement which declares C can throw; and 
+ - E is assignment compatible with any of C's catchable exception classes; and 
+ - E is not assignment compatible with any of the catchable exception classes of the catch clauses declared to the left of C in the same try statement.
+
+ A _try_ statement can throw an exception class E _if and only if_ either:
+  -  The try block can throw E, or an expression used to initialize a resource (in a _try-with-resources_ statement) can throw E, or the automatic invocation of the close() method of a resource (in a _try-with-resources_ statement) can throw E, and E is not assignment compatible with any catchable exception class of any _catch_ clause of the _try_ statement, and either no _finally_ block is present or the _finally_ vlock can complete normally; or
+  - Some catch block of the _try_ statement can throw E and either no _finally_ block is present or the _finally_ block can complete normally; or 
+  - A finally block is present and can throw E.
+
+  An explicit constructor invocation statement can throw an exception class E _if and only if_ either:
+   - Some expression of the constructor invocation's parameter list can throw E; or 
+   - E is determined to be an exception class of the _throws_ clause of the constructor that is invoked.
+
+   A _switch_ statement can throw Exception class E _if and only if_ either:
+    - The selector expression can throw E; or 
+    - Some switch rule expression, switch rule block, switch rule _throw_ statement, or switch labeled statement group in the switch block can throw E.
+
+Any other statement <code>S</code> can throw an exception class <code>E</code> _if and only if_ expression or statement immediately contained in a <code>S</code> that can thrown <code>E</code>
+
+---
+
+### Note: 11.2.2. Exception Analysis of Statements
+_A _throw_ statement whose thrown expression has static type E and is not a final or effectively final exception parameter can throw E or any exception class that the thrown expression can throw._
+> Perhaps a possible way to sneak SWRR exceptions into code?
+
+_E is an exception class that the _try_ block of the _try_ statement which declares C can throw_
+> It's not clearly defined which exceptions the _try_ block of the _try_ statement can throw?
+> My intuition says that the statement is quite literal, meaning that the _try_ block can throw any exception which _technically_ is possible.
+```Java
+try{
+    //Represents any intentionally throwable Exception.
+    throw E;
+}
+```
+<small>_This try block should be able to throw any 'intentionally throwable' Exception 'E' in addition to exceptions such as __StackOverflowException__ which are triggered._</code>
+
+_'E is assignment compatible with any of C's catchable exception classes'_
+> Perhaps SWRRs can be made assignment compatible with other exception cases?
+
+_'E is not assignment compatible with any of the catchable exception classes of the catch clauses declared to the left of C in the same try statement.'_
+> This seems unclear to me, what does 'declared to the left of C in the same try statement' refer to?
+
+_'The try block can throw E, or an expression used to initialize a resource (in a _try-with-resources_ statement) can throw E, or the automatic invocation of the close() method of a resource (in a _try-with-resources_ statement) can throw E, and E is not assignment compatible with any catchable exception class of any _catch_ clause of the _try_ statement, and either no _finally_ block is present or the _finally_ block can complete normally'_
+
+--- 
+
+# PIVOT, Read about Annotations and Instrumentation First
