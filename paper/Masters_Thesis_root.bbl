@@ -1,3 +1,33 @@
-\begin{thebibliography}{}
+\begin{thebibliography}{1}
+
+\bibitem{cybersecurityreviewWHATCANT}
+Scott Coleman.
+\newblock What if you can’t patch? - cyber security review, n.d.
+\newblock [Accessed 10-02-2025].
+
+\bibitem{DISSANAYAKE2022106771}
+Nesara Dissanayake, Asangi Jayatilaka, Mansooreh Zahedi, and M.~Ali Babar.
+\newblock Software security patch management - a systematic literature review of challenges, approaches, tools and practices.
+\newblock {\em Information and Software Technology}, 144:106771, 2022.
+
+\bibitem{hall2017time}
+Carissa~G Hall.
+\newblock {\em Time sensitivity in cyberweapon reusability}.
+\newblock PhD thesis, Monterey, California: Naval Postgraduate School, 2017.
+
+\bibitem{1281254}
+G.~McGraw.
+\newblock Software security.
+\newblock {\em IEEE Security \& Privacy}, 2(2):80--83, March 2004.
+
+\bibitem{doi:10.10520/EJC-1b9220e55b}
+Anthony Minnaar.
+\newblock Cybercriminals, cyber-extortion, online blackmailers and the growth of ransomware.
+\newblock {\em Acta Criminologica : African Journal of Criminology \&amp; Victimology}, 32(2):105, 2019.
+
+\bibitem{XU2023103908}
+Tianhao Xu, Kuldeep Singh, and Prashanth Rajivan.
+\newblock Personalized persuasion: Quantifying susceptibility to information exploitation in spear-phishing attacks.
+\newblock {\em Applied Ergonomics}, 108:103908, 2023.
 
 \end{thebibliography}

@@ -17,8 +17,8 @@
 \title{Talos+ Leveraging Structured Error Handling For Increased Security}
 \subtitle{Broad software vulnerability mitigation through enabling Security Workarounds for Rapid Response in Java}
 \author{Melker Henriksson}
-\supervisor{Prof. Alexandre Bartél} % Supervisor at UMU
-\supervisore{Anders Sigfridsson, Evelina Malmqvist} % External supervisor
+\supervisor{Prof.Alexandre Bartél} % Supervisor at UMU
+\supervisore{Anders Sigfridsson, Evelina Malmqvist, Christoph Reichenbach} % External supervisor
 \examiner{Ola Ringdahl} % Examiner
 \semester{Spring 2025}
 \course{Degree Project in Interaction Technology and Design, 30 credits}
@@ -31,15 +31,14 @@
 \begin{document}
 \maketitle
 
-\cleardoublepage
-\begin{abstract}
-% An abstract is a short description (10-20 lines) of your thesis. Because on-line search databases typically contain only abstracts, it is vital to write a complete but concise description of your work to entice potential readers into obtaining a copy of the full paper. Although an abstract is brief, it should do almost as much work as the multi-page paper that follows it. Each chapter or section is typically a single sentence, but there is always room for creativity. In particular, parts may be merged or spread among a set of sentences. This template for a Bachelor's or Master's Thesis report using {{\LaTeX}} is written by Pedher Johansson, associate professor at the Department of Computing Science, Umeå University. Parts of the files are besed o work done in 2004 by Jonas Birmé, modified by Per Lindström. Ola Ringdahl added the new UMU logo (2019) and modified the template to match the ID programme.
+\cleardoublepage\begin{abstract}
+% An abstract is a short description (10-20 lines) of your thesis. Because on-line search databases typically contain only abstracts, it is vital to write a complete but concise description of your work to entice potential readers into obtaining a copy of the full paper. Although an abstract is brief, it should do almost as much work as the multi-page paper that follows it. Each chapter or section is typically a single sentence, but there is always room for creativity. In particular, parts may be merged or spread among a set of sentences. This template for a Bachelor's or Master's Thesis report using {{\LaTeX}} is written by Pedher Johansson, associate professor at the Department of Computing Science, Umeå University. Parts of the files are based o work done in 2004 by Jonas Birmé, modified by Per Lindström. Ola Ringdahl added the new UMU logo (2019) and modified the template to match the ID programme.
 
 %It is my aim to extend, compare and verify the claims made in the paper "Talos: Neutralizing Vulnerabilities with Securiity Workarounds for Rapid Response". In their paper Zhen Huang et. al.describe an algorithm which can, to some degree, detect error-handling code and instrument these segments with 'Security Workarounds for Rapid Response' allowing them to be disabled by developers while a patch is being written. Therefore improving the pre-patch window of vulnerability. Through reimplementing the software with a focus on Java a language with structured exception handling we can compare the coverage provided as the number of previous Vulnerabilities which can be neutralized using 'Talos+' and further strengthen Talos viability as a mitigation strategy by extending it to a language with structured exception handling as a proof of concept.
 
 The pre-patch window of Vulnerability remains a critical challenge in cybersecurity, leaving systems exposed to exploits before patches are deployed.
 
-The paper \textit{`Talos: Neutralizing Vulnerabilities with Security Workarounds for Rapid Response`} by Zhen Huang et al. proposes an algorithm that detects error-handling code and instruments it with security workarounds, allowing developers to disable vulnerable segments temporarily. 
+The paper \textit{`Talos: Neutralizing Vulnerabilities with Security Workarounds for Rapid Response`} by Zhen Huang et al.~proposes an algorithm that detects error-handling code and instruments it with security workarounds, allowing developers to disable vulnerable segments temporarily. 
 
 This thesis aims to extend, compare, and verify the claims made in the Talos paper. Since the algorithm's heuristics focus on languages without structured exception handling and experiments are only performed on programs written in c/c++, there is as mentioned in future works potential to expand Talos functionality to cover these languages.
 
@@ -49,21 +48,58 @@ The findings aim to improve the pre-patch vulnerability window for Java and expl
 
 
 \end{abstract}
-\cleardoublepage
-\chapter*{Acknowledgements}
-\cleardoublepage
-\tableofcontents
-\cleardoublepage
-\pagestyle{fancy}
+\cleardoublepage\chapter*{Acknowledgements}
+\chapter*{List of Acronyms and Abbreviations}
+\begin{center}
+    \begin{tabular}{c | c}
+        \verb|SWRR| &~'Security Workaround for Rapid Response' \\
+        \verb|CIA| &~'Confidentiality, Integrity and Availability'\\
+    \end{tabular}
+\end{center}
+\cleardoublepage\tableofcontents
+\cleardoublepage\pagestyle{fancy}
 \pagenumbering{arabic}
 \setcounter{page}{1}
+
 \chapter{Introduction}
-before the first chapter.
+Software security is the pursuit of engineering software which under attack continues expected function~\cite{1281254}. This pursuit is still of great import as large industries, infrastructure and commercial networks often expect and assume peak performance from software, downtime caused by security breaches can then cause significant financial impact~\cite{cybersecurityreviewWHATCANT}.
+
+The nature of some software requires the management of users personal information, for example banking websites or online therapy. A security breach of such systems may lead to disclosure, blackmail  or in some cases escalation using spear-phishing techniques~\cite{XU2023103908,doi:10.10520/EJC-1b9220e55b}.
+
+The often sensitive nature of software highlights why security vulnerabilities are a significant problem which is interesting to solve or mitigate.
+
+If a piece of software becomes unable to offer it's users either availability, confidentiality or integrity for services rendered then that software requires a \textit{Patch}. Patching Modifying the code responsible for exposing some vulnerability such that this is no longer possible, usually without a loss in functionality or performance.
+
+It seems reasonable to assume that there would exist a correlation between the time-to-patch and number of exploits performed on a vulnerable piece of software. In fact, in writing about reusable cyberweapons i.e weaponized software code that exploits flaws in software, Carissa G. Hall refers to the pre-patch window of vulnerability as the window of opportunity. In the life cycle of an vulnerability, the implementation of a patch represents death.~\cite{hall2017time}
+
+If we are interested in contributing to a greater security then reducing the time-to-patch would likely have a significant effect.
+
+The paper \textit{'Talos: Neutralizing Vulnerabilities with Security Workarounds for Rapid Response'} suggests that software could be instrumented allowing for disabling functions through a configuration file or patching. This would allow developers to quickly disallow vulnerable code from running on user end while they're working on patching. Effectively reducing the time-to-patch at the cost of some availability.
+
+This is then in contrast to traditional configuration workarounds exemplified by CVE\-2021\-44228
 
 
+
+
+
+\chapter{Background}
+Background
+\chapter{Overview}
+Overview
+\chapter{Talos, Talos+}
+\paragraph{Talos}
+\paragraph{Talos+}
+\chapter{Implementation}
+Implementation
+\chapter{Evaluation}
+Evaluation
+\chapter{Conclusion}
+Conclusion
+\chapter{Discussion}
+Diskussion
 
 \cleardoublepage
-
+\nocite{*}
 \addcontentsline{toc}{chapter}{\bibname}
 \bibliographystyle{plain}
 \bibliography{base}
