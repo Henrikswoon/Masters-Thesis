@@ -65,8 +65,29 @@ Details about `proftpd.out` go here.
 ## Talos_exec.c
 Details about `Talos_exec.c` go here.
 
-## talos.py
-Details about `talos.py` go here.
+## `talos.py`
+```python
+class Talos:
+    def __init(self, args):
+    # Initialize objects
+    # Receive input
+2863: self.pass1(self.InputFile) # InputFile in this case is 
+```
 
+```python
+def pass1(self, InputFile):
+    print "pass 1...initialize
+    countWrappers = 0
+    lineNo = 0
+    input = open(InputFile, 'r')
+    for line in input:
+        # Increment lineNo
+        # Print LineNo and if Debug flag is active for LineNo
+        # Split input file at Field separator '@' characters 
+        # 
+        # 
+        # 
+        # 
+```
 ## Talos_SWRR.c
 Details about `Talos_SWRR.c` go here.

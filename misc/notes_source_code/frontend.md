@@ -55,6 +55,8 @@ Details about `Analyzer.cpp` go here.
 ## Analyzer.cpp~
 Details about `Analyzer.cpp~` go here.
 
+---
+
 ## `bitvector.h`
 ```c++
 #include <vector>
@@ -85,46 +87,86 @@ class Bitvector{
 
 
 ## `bitvector.cc`
-#### Constructors
-```c++
-Bitvector::Bitvector(int size)
-```
-Allocates a _size_ number of 32 bit _words_ to _m_bits_
-
-```c++
-Bitvector::Bitvector(unsigned char a[], int size)
-```
-Allocates a _size_ number of 32 bit _words_ containing _a_ to _m_bits_
-
-```c++
-Bitvector::Bitvector(const Bitvector& bv)
-```
-Clones a _Bitvector_.
-#### Deconstructor
-Deallocates allocated field m_bits for deconstructed _Bitvector_
-
-#### Helper Functions
-
+A vector containing 32 bit words.
 
 ---
 
-## cfg.h
-Details about `cfg.h` go here.
+## `cfg.h`
+Abstract class concerning Control flow graphs
 
-## dataflow.cc
-Details about `dataflow.cc` go here.
+---
+## `dataflow.cc`
+Manages dataflow analysis.
 
-## dataflow.h
-Details about `dataflow.h` go here.
+## `dataflow.h`
+```c++
+#ifndef DATAFLOW_H
+#define DATAFLOW_H
 
-## Makefile
-Details about `Makefile` go here.
+#include <queue>
+#include <vector>
+#include "bitvector.h"
+#include "cfg.h"
 
-## reachacc.cc
-Details about `reachacc.cc` go here.
+class Dataflow {
+private:
+	// variables
+	std::vector<Bitvector > m_in_set;
+	std::vector<Bitvector > m_out_set;
+	std::queue<int> m_worklist;
 
-## reachacc.h
-Details about `reachacc.h` go here.
+	// methods
+	Bitvector meet(int block);
+protected:
+	Cfg *m_cfg;
+	int m_set_size;
+	virtual Bitvector get_gen_set(int) = 0;
+	virtual Bitvector get_kill_set(int) = 0;
+	virtual Bitvector get_init_in_set(int block_num) = 0;
+	virtual Bitvector get_init_out_set(int block_num) = 0;
+
+	enum Direction {
+		FORWARD,
+		BACKWARD
+	};
+	enum Meet {
+		ANYPATH,
+		ALLPATH
+	};
+	Direction m_direction;
+	Meet m_meet;
+public:
+	Dataflow(Cfg *cfg, int size);
+	virtual ~Dataflow();
+	void analyze();
+	Bitvector get_in_set(int);
+	std::vector<Bitvector> get_in_sets();
+	std::vector<Bitvector> get_out_sets();
+};
+#endif
+```
+---
+
+## `reachacc.h`
+```c++
+#ifndef REACHACC_H
+#define REACHACC_H
+
+#include "bitvector.h"
+#include "dataflow.h"
+
+class ReachAcc : public Dataflow {
+public:
+		ReachAcc(Cfg *cfg, int size);
+private:
+		virtual Bitvector get_init_in_set(int);
+		virtual Bitvector get_init_out_set(int);
+		virtual Bitvector get_gen_set(int);
+		virtual Bitvector get_kill_set(int);
+};
+#endif	
+```
+## `reachacc.cc`
 
 ## reachdef.cc
 Details about `reachdef.cc` go here.
