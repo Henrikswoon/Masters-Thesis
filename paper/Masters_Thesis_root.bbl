@@ -1,4 +1,12 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+
+\bibitem{ed-22-02}
+CISA.
+\newblock ed-22-02, 2022.
+
+\bibitem{ed-22-02-rmm}
+CISA.
+\newblock ed-22-02 recommended mitigation measures, 2022.
 
 \bibitem{cloudflare:rce}
 cloudflare.
@@ -29,6 +37,10 @@ G.~McGraw.
 Anthony Minnaar.
 \newblock Cybercriminals, cyber-extortion, online blackmailers and the growth of ransomware.
 \newblock {\em Acta Criminologica : African Journal of Criminology \&amp; Victimology}, 32(2):105, 2019.
+
+\bibitem{CWE-416}
+mitre.
+\newblock Cwe-416: Use after free, 2024.
 
 \bibitem{XU2023103908}
 Tianhao Xu, Kuldeep Singh, and Prashanth Rajivan.

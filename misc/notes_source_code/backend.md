@@ -66,6 +66,19 @@ Details about `proftpd.out` go here.
 Details about `Talos_exec.c` go here.
 
 ## `talos.py`
+Entry at 
+```python
+if __name__ == '__main__':
+    start_time = time.time() # Used to record and display total runtime for synthesis and instrumentation
+    
+    parser = argparse.ArgumentParser()
+    parser.add_argument(...)
+    args = vars(parser.parse_args(sys.argv[1:])) 
+
+    talos = Talos(args) # Run pass 1-4
+    talos.main()        # Later
+```
+
 ```python
 class Talos:
     def __init(self, args):
@@ -81,13 +94,44 @@ def pass1(self, InputFile):
     lineNo = 0
     input = open(InputFile, 'r')
     for line in input:
-        # Increment lineNo
-        # Print LineNo and if Debug flag is active for LineNo
-        # Split input file at Field separator '@' characters 
-        # 
-        # 
-        # 
-        # 
+        # 1.  Increment lineNo
+        # 1.1 Print LineNo and if Debug flag is active for LineNo
+        # 2.  Strip and Split line from input file at Field separator '@' characters as parts[] 
+        # 3.  Get function name from parts[4] and store it as functionName
+        # 4.  If functionName is '*' print 'Ignoring * as caller at {lineNo}'
+        # 5.  Get Callee name from parts[7] and store it as calleeName
+        # 6.  Try to get the functionID using get_function(self, dir, file, function):
+        # 6.{
+            # get_function() either returns an unique id (int) if the function exists in self.Functions
+            # if the function was not previously appended to self.Functions 
+            #     then do so using key (dir, file, function)
+            #     store the reverse in self.FunctionRef[ID] = (dir, file, function)   
+            # finally, if the function is not in FunctionLocaion
+            #     FunctionLocation[function] = set().add(ID)
+            # return ID   
+        #   }
+        # 7. get fileId (int) from get_file(parts[1], parts[2]) directory / filename
+        # 8. get Basic Block (int) for LineNo using self.get_BB(fileID, functionID, parts[3], parts[5], calleeName) 3:lineNum / 5:BBID
+        # 9. if calleeName:
+        #       if not calleName in self.RCalls: # Where RCalls stores a set of Basic Blocks
+        #           assign an empty set to RCalls[calleeName]
+        #       self.RCalls[calleeName].add(BB)
+        #       if not functionName in self.Calls
+        #           assign an empty set to Calls[functionName]
+        #       self.Calls[functionName].add(BB)
+        #       self.Callees[BB] = calleeName
+        #       self.LineOfCall[(fileID, parts[3])] = BB # 3:lineNum
+        # 10. if parts[10].find(',') > 0: 
+        #       retInfo = parts[10].split(',')
+        #       callType = int(retInfo[0])
+        #       ret_line = int(retInfo[1])
+        #       ret_value = retInfo[2]
+        #       ret_BB = self.get_BB(fileID, functionID, str(ret_line), str(ret_line))
+        #       self.BBFollowByReturn[BB] = (ret_BB, ret_value, fileID)
+        #
+        #     if ret_value == "NULL":
+        #       if not functionName in self.FunctionLines:
+        #           self.FunctionLines[functionName] = [0,0, -int(parts[3]),None,None,None]
 ```
 ## Talos_SWRR.c
 Details about `Talos_SWRR.c` go here.
