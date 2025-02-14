@@ -131,7 +131,13 @@ def pass1(self, InputFile):
         #
         #     if ret_value == "NULL":
         #       if not functionName in self.FunctionLines:
-        #           self.FunctionLines[functionName] = [0,0, -int(parts[3]),None,None,None]
+        #           self.FunctionLines[functionName] = [0,0, -int(parts[3]),None,None,None]     # 3:lineNum
+        #       else: # if functionName in self.FunctionLines
+        #           self.FunctionLines[functionName][2] = -int(parts[3],None,None,None)         # 3:lineNum
+        #       self.add_error_return(3, functionName, BB, ret_value)   # arg[0] is 'error return kind'
+        #                                                               # 3:pointer returning
+        #       
+        #       
 ```
 ## Talos_SWRR.c
 Details about `Talos_SWRR.c` go here.
