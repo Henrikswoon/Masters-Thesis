@@ -18,6 +18,7 @@ class TestExceptionHandling{
         int x = 0;
         try {
             throw new SWRRException("Test redirecting execution, does control flow continue after 'catch'?");
+            //System.out.println("Unreachable");
         } catch (SWRRException e) {
             System.out.println("[TEST 1:]\tCaught: "+e.getMessage());
             x = 2;
