@@ -6,4 +6,10 @@ in-place deployment, should users be able to themselves selectively disable cert
 
 Does the indirect Heuristic cause an undue amount of collateral damage compared to the relative gain?
 
-Is it important to distinguish between versions of Java?
+---
+
+Should there be some way to ignore IDE added classes such as org.intellij.lang ?
+
+Is referring to markets selling vulnerabilities a good way to demonstrate the demand for unpatched vulnerabilities from malicious actors? Is a source from 2005 sufficiently recent? If not can i use some other source than those i've found.
+
+
